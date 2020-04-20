@@ -4,3 +4,5 @@ node_modules/
 .build/
 layout.md
 variables.env
+backend/.vscode/settings.json
+frontend/.vscode/settings.json
