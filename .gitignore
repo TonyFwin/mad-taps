@@ -6,3 +6,4 @@ layout.md
 variables.env
 backend/.vscode/settings.json
 frontend/.vscode/settings.json
+backend/.env
