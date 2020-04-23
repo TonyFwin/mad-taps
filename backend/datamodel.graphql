@@ -3,3 +3,26 @@ type User {
   name: String!
   email: String! @unique
 }
+
+type Beer {
+  id: ID! @id
+  name: String!
+  style: String!
+  description: String!
+  abv: Float!
+  ibu: Int!
+  brewery: String!
+  price: Int!
+  image: String
+  largeImage: String
+  # user: User!
+}
+
+type Brewery {
+  id: ID! @id
+  name: String!
+  description: String!
+  location: String!
+  image: String
+  largeImage: String
+}

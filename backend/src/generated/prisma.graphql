@@ -1,5 +1,13 @@
 # source: https://us1.prisma.sh/tony-nguyen-51ba19/mad-taps/dev
-# timestamp: Wed Apr 22 2020 14:17:31 GMT-0600 (GMT-06:00)
+# timestamp: Thu Apr 23 2020 10:15:07 GMT-0600 (GMT-06:00)
+
+type AggregateBeer {
+  count: Int!
+}
+
+type AggregateBrewery {
+  count: Int!
+}
 
 type AggregateUser {
   count: Int!
@@ -10,6 +18,882 @@ type BatchPayload {
   count: Long!
 }
 
+type Beer implements Node {
+  id: ID!
+  name: String!
+  style: String!
+  description: String!
+  abv: Float!
+  ibu: Int!
+  brewery: String!
+  price: Int!
+  image: String
+  largeImage: String
+}
+
+"""A connection to a list of items."""
+type BeerConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BeerEdge]!
+  aggregate: AggregateBeer!
+}
+
+input BeerCreateInput {
+  id: ID
+  name: String!
+  style: String!
+  description: String!
+  abv: Float!
+  ibu: Int!
+  brewery: String!
+  price: Int!
+  image: String
+  largeImage: String
+}
+
+"""An edge in a connection."""
+type BeerEdge {
+  """The item at the end of the edge."""
+  node: Beer!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BeerOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  style_ASC
+  style_DESC
+  description_ASC
+  description_DESC
+  abv_ASC
+  abv_DESC
+  ibu_ASC
+  ibu_DESC
+  brewery_ASC
+  brewery_DESC
+  price_ASC
+  price_DESC
+  image_ASC
+  image_DESC
+  largeImage_ASC
+  largeImage_DESC
+}
+
+type BeerPreviousValues {
+  id: ID!
+  name: String!
+  style: String!
+  description: String!
+  abv: Float!
+  ibu: Int!
+  brewery: String!
+  price: Int!
+  image: String
+  largeImage: String
+}
+
+type BeerSubscriptionPayload {
+  mutation: MutationType!
+  node: Beer
+  updatedFields: [String!]
+  previousValues: BeerPreviousValues
+}
+
+input BeerSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BeerWhereInput
+}
+
+input BeerUpdateInput {
+  name: String
+  style: String
+  description: String
+  abv: Float
+  ibu: Int
+  brewery: String
+  price: Int
+  image: String
+  largeImage: String
+}
+
+input BeerUpdateManyMutationInput {
+  name: String
+  style: String
+  description: String
+  abv: Float
+  ibu: Int
+  brewery: String
+  price: Int
+  image: String
+  largeImage: String
+}
+
+input BeerWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BeerWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BeerWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BeerWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  style: String
+
+  """All values that are not equal to given value."""
+  style_not: String
+
+  """All values that are contained in given list."""
+  style_in: [String!]
+
+  """All values that are not contained in given list."""
+  style_not_in: [String!]
+
+  """All values less than the given value."""
+  style_lt: String
+
+  """All values less than or equal the given value."""
+  style_lte: String
+
+  """All values greater than the given value."""
+  style_gt: String
+
+  """All values greater than or equal the given value."""
+  style_gte: String
+
+  """All values containing the given string."""
+  style_contains: String
+
+  """All values not containing the given string."""
+  style_not_contains: String
+
+  """All values starting with the given string."""
+  style_starts_with: String
+
+  """All values not starting with the given string."""
+  style_not_starts_with: String
+
+  """All values ending with the given string."""
+  style_ends_with: String
+
+  """All values not ending with the given string."""
+  style_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  abv: Float
+
+  """All values that are not equal to given value."""
+  abv_not: Float
+
+  """All values that are contained in given list."""
+  abv_in: [Float!]
+
+  """All values that are not contained in given list."""
+  abv_not_in: [Float!]
+
+  """All values less than the given value."""
+  abv_lt: Float
+
+  """All values less than or equal the given value."""
+  abv_lte: Float
+
+  """All values greater than the given value."""
+  abv_gt: Float
+
+  """All values greater than or equal the given value."""
+  abv_gte: Float
+  ibu: Int
+
+  """All values that are not equal to given value."""
+  ibu_not: Int
+
+  """All values that are contained in given list."""
+  ibu_in: [Int!]
+
+  """All values that are not contained in given list."""
+  ibu_not_in: [Int!]
+
+  """All values less than the given value."""
+  ibu_lt: Int
+
+  """All values less than or equal the given value."""
+  ibu_lte: Int
+
+  """All values greater than the given value."""
+  ibu_gt: Int
+
+  """All values greater than or equal the given value."""
+  ibu_gte: Int
+  brewery: String
+
+  """All values that are not equal to given value."""
+  brewery_not: String
+
+  """All values that are contained in given list."""
+  brewery_in: [String!]
+
+  """All values that are not contained in given list."""
+  brewery_not_in: [String!]
+
+  """All values less than the given value."""
+  brewery_lt: String
+
+  """All values less than or equal the given value."""
+  brewery_lte: String
+
+  """All values greater than the given value."""
+  brewery_gt: String
+
+  """All values greater than or equal the given value."""
+  brewery_gte: String
+
+  """All values containing the given string."""
+  brewery_contains: String
+
+  """All values not containing the given string."""
+  brewery_not_contains: String
+
+  """All values starting with the given string."""
+  brewery_starts_with: String
+
+  """All values not starting with the given string."""
+  brewery_not_starts_with: String
+
+  """All values ending with the given string."""
+  brewery_ends_with: String
+
+  """All values not ending with the given string."""
+  brewery_not_ends_with: String
+  price: Int
+
+  """All values that are not equal to given value."""
+  price_not: Int
+
+  """All values that are contained in given list."""
+  price_in: [Int!]
+
+  """All values that are not contained in given list."""
+  price_not_in: [Int!]
+
+  """All values less than the given value."""
+  price_lt: Int
+
+  """All values less than or equal the given value."""
+  price_lte: Int
+
+  """All values greater than the given value."""
+  price_gt: Int
+
+  """All values greater than or equal the given value."""
+  price_gte: Int
+  image: String
+
+  """All values that are not equal to given value."""
+  image_not: String
+
+  """All values that are contained in given list."""
+  image_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_not_in: [String!]
+
+  """All values less than the given value."""
+  image_lt: String
+
+  """All values less than or equal the given value."""
+  image_lte: String
+
+  """All values greater than the given value."""
+  image_gt: String
+
+  """All values greater than or equal the given value."""
+  image_gte: String
+
+  """All values containing the given string."""
+  image_contains: String
+
+  """All values not containing the given string."""
+  image_not_contains: String
+
+  """All values starting with the given string."""
+  image_starts_with: String
+
+  """All values not starting with the given string."""
+  image_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_ends_with: String
+
+  """All values not ending with the given string."""
+  image_not_ends_with: String
+  largeImage: String
+
+  """All values that are not equal to given value."""
+  largeImage_not: String
+
+  """All values that are contained in given list."""
+  largeImage_in: [String!]
+
+  """All values that are not contained in given list."""
+  largeImage_not_in: [String!]
+
+  """All values less than the given value."""
+  largeImage_lt: String
+
+  """All values less than or equal the given value."""
+  largeImage_lte: String
+
+  """All values greater than the given value."""
+  largeImage_gt: String
+
+  """All values greater than or equal the given value."""
+  largeImage_gte: String
+
+  """All values containing the given string."""
+  largeImage_contains: String
+
+  """All values not containing the given string."""
+  largeImage_not_contains: String
+
+  """All values starting with the given string."""
+  largeImage_starts_with: String
+
+  """All values not starting with the given string."""
+  largeImage_not_starts_with: String
+
+  """All values ending with the given string."""
+  largeImage_ends_with: String
+
+  """All values not ending with the given string."""
+  largeImage_not_ends_with: String
+}
+
+input BeerWhereUniqueInput {
+  id: ID
+}
+
+type Brewery implements Node {
+  id: ID!
+  name: String!
+  description: String!
+  location: String!
+  image: String
+  largeImage: String
+}
+
+"""A connection to a list of items."""
+type BreweryConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [BreweryEdge]!
+  aggregate: AggregateBrewery!
+}
+
+input BreweryCreateInput {
+  id: ID
+  name: String!
+  description: String!
+  location: String!
+  image: String
+  largeImage: String
+}
+
+"""An edge in a connection."""
+type BreweryEdge {
+  """The item at the end of the edge."""
+  node: Brewery!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum BreweryOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  description_ASC
+  description_DESC
+  location_ASC
+  location_DESC
+  image_ASC
+  image_DESC
+  largeImage_ASC
+  largeImage_DESC
+}
+
+type BreweryPreviousValues {
+  id: ID!
+  name: String!
+  description: String!
+  location: String!
+  image: String
+  largeImage: String
+}
+
+type BrewerySubscriptionPayload {
+  mutation: MutationType!
+  node: Brewery
+  updatedFields: [String!]
+  previousValues: BreweryPreviousValues
+}
+
+input BrewerySubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BrewerySubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BrewerySubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BrewerySubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: BreweryWhereInput
+}
+
+input BreweryUpdateInput {
+  name: String
+  description: String
+  location: String
+  image: String
+  largeImage: String
+}
+
+input BreweryUpdateManyMutationInput {
+  name: String
+  description: String
+  location: String
+  image: String
+  largeImage: String
+}
+
+input BreweryWhereInput {
+  """Logical AND on all given filters."""
+  AND: [BreweryWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [BreweryWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [BreweryWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  description: String
+
+  """All values that are not equal to given value."""
+  description_not: String
+
+  """All values that are contained in given list."""
+  description_in: [String!]
+
+  """All values that are not contained in given list."""
+  description_not_in: [String!]
+
+  """All values less than the given value."""
+  description_lt: String
+
+  """All values less than or equal the given value."""
+  description_lte: String
+
+  """All values greater than the given value."""
+  description_gt: String
+
+  """All values greater than or equal the given value."""
+  description_gte: String
+
+  """All values containing the given string."""
+  description_contains: String
+
+  """All values not containing the given string."""
+  description_not_contains: String
+
+  """All values starting with the given string."""
+  description_starts_with: String
+
+  """All values not starting with the given string."""
+  description_not_starts_with: String
+
+  """All values ending with the given string."""
+  description_ends_with: String
+
+  """All values not ending with the given string."""
+  description_not_ends_with: String
+  location: String
+
+  """All values that are not equal to given value."""
+  location_not: String
+
+  """All values that are contained in given list."""
+  location_in: [String!]
+
+  """All values that are not contained in given list."""
+  location_not_in: [String!]
+
+  """All values less than the given value."""
+  location_lt: String
+
+  """All values less than or equal the given value."""
+  location_lte: String
+
+  """All values greater than the given value."""
+  location_gt: String
+
+  """All values greater than or equal the given value."""
+  location_gte: String
+
+  """All values containing the given string."""
+  location_contains: String
+
+  """All values not containing the given string."""
+  location_not_contains: String
+
+  """All values starting with the given string."""
+  location_starts_with: String
+
+  """All values not starting with the given string."""
+  location_not_starts_with: String
+
+  """All values ending with the given string."""
+  location_ends_with: String
+
+  """All values not ending with the given string."""
+  location_not_ends_with: String
+  image: String
+
+  """All values that are not equal to given value."""
+  image_not: String
+
+  """All values that are contained in given list."""
+  image_in: [String!]
+
+  """All values that are not contained in given list."""
+  image_not_in: [String!]
+
+  """All values less than the given value."""
+  image_lt: String
+
+  """All values less than or equal the given value."""
+  image_lte: String
+
+  """All values greater than the given value."""
+  image_gt: String
+
+  """All values greater than or equal the given value."""
+  image_gte: String
+
+  """All values containing the given string."""
+  image_contains: String
+
+  """All values not containing the given string."""
+  image_not_contains: String
+
+  """All values starting with the given string."""
+  image_starts_with: String
+
+  """All values not starting with the given string."""
+  image_not_starts_with: String
+
+  """All values ending with the given string."""
+  image_ends_with: String
+
+  """All values not ending with the given string."""
+  image_not_ends_with: String
+  largeImage: String
+
+  """All values that are not equal to given value."""
+  largeImage_not: String
+
+  """All values that are contained in given list."""
+  largeImage_in: [String!]
+
+  """All values that are not contained in given list."""
+  largeImage_not_in: [String!]
+
+  """All values less than the given value."""
+  largeImage_lt: String
+
+  """All values less than or equal the given value."""
+  largeImage_lte: String
+
+  """All values greater than the given value."""
+  largeImage_gt: String
+
+  """All values greater than or equal the given value."""
+  largeImage_gte: String
+
+  """All values containing the given string."""
+  largeImage_contains: String
+
+  """All values not containing the given string."""
+  largeImage_not_contains: String
+
+  """All values starting with the given string."""
+  largeImage_starts_with: String
+
+  """All values not starting with the given string."""
+  largeImage_not_starts_with: String
+
+  """All values ending with the given string."""
+  largeImage_ends_with: String
+
+  """All values not ending with the given string."""
+  largeImage_not_ends_with: String
+}
+
+input BreweryWhereUniqueInput {
+  id: ID
+}
+
 """
 The `Long` scalar type represents non-fractional signed whole numeric values.
 Long can represent values between -(2^63) and 2^63 - 1.
@@ -18,11 +902,23 @@ scalar Long
 
 type Mutation {
   createUser(data: UserCreateInput!): User!
+  createBeer(data: BeerCreateInput!): Beer!
+  createBrewery(data: BreweryCreateInput!): Brewery!
   updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updateBeer(data: BeerUpdateInput!, where: BeerWhereUniqueInput!): Beer
+  updateBrewery(data: BreweryUpdateInput!, where: BreweryWhereUniqueInput!): Brewery
   deleteUser(where: UserWhereUniqueInput!): User
+  deleteBeer(where: BeerWhereUniqueInput!): Beer
+  deleteBrewery(where: BreweryWhereUniqueInput!): Brewery
   upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertBeer(where: BeerWhereUniqueInput!, create: BeerCreateInput!, update: BeerUpdateInput!): Beer!
+  upsertBrewery(where: BreweryWhereUniqueInput!, create: BreweryCreateInput!, update: BreweryUpdateInput!): Brewery!
   updateManyUsers(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateManyBeers(data: BeerUpdateManyMutationInput!, where: BeerWhereInput): BatchPayload!
+  updateManyBreweries(data: BreweryUpdateManyMutationInput!, where: BreweryWhereInput): BatchPayload!
   deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyBeers(where: BeerWhereInput): BatchPayload!
+  deleteManyBreweries(where: BreweryWhereInput): BatchPayload!
 }
 
 enum MutationType {
@@ -54,8 +950,14 @@ type PageInfo {
 
 type Query {
   users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  beers(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Beer]!
+  breweries(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Brewery]!
   user(where: UserWhereUniqueInput!): User
+  beer(where: BeerWhereUniqueInput!): Beer
+  brewery(where: BreweryWhereUniqueInput!): Brewery
   usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  beersConnection(where: BeerWhereInput, orderBy: BeerOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BeerConnection!
+  breweriesConnection(where: BreweryWhereInput, orderBy: BreweryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BreweryConnection!
 
   """Fetches an object given its ID"""
   node(
@@ -66,6 +968,8 @@ type Query {
 
 type Subscription {
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  beer(where: BeerSubscriptionWhereInput): BeerSubscriptionPayload
+  brewery(where: BrewerySubscriptionWhereInput): BrewerySubscriptionPayload
 }
 
 type User implements Node {

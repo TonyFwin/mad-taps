@@ -1,7 +1,28 @@
+# import * from './generated/prisma.graphql'
+
 type Mutation {
-  hi: String
+  createBeer(
+    name: String
+    style: String
+    description: String
+    abv: Float
+    ibu: Int
+    brewery: String
+    price: Int
+    image: String
+    largeImage: String
+  ): Beer!
+
+  createBrewery(
+    name: String!
+    description: String!
+    location: String!
+    image: String
+    largeImage: String
+  ): Brewery!
 }
 
 type Query {
-  hi: String
+  beers: [Beer]!
+  breweries: [Brewery]!
 }
