@@ -17,7 +17,7 @@ server.start(
   },
   details => {
     console.log(
-      `Server is not running on port http://localhost:${details.port}`
+      `Server is now running on port http://localhost:${details.port}`
     );
   }
 );
