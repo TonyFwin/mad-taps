@@ -5,8 +5,8 @@ import NavStyles from './styles/NavStyles';
 const Nav = props => {
   return (
     <NavStyles>
-      <Link href='/'>
-        <a>Home</a>
+      <Link href='/beers'>
+        <a>Shop</a>
       </Link>
       <Link href='/sell'>
         <a>Sell</a>
