@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/tony-nguyen-51ba19/mad-taps/dev
-# timestamp: Thu Apr 23 2020 10:15:07 GMT-0600 (GMT-06:00)
+# timestamp: Thu Apr 23 2020 10:34:55 GMT-0600 (GMT-06:00)
 
 type AggregateBeer {
   count: Int!
@@ -25,7 +25,6 @@ type Beer implements Node {
   description: String!
   abv: Float!
   ibu: Int!
-  brewery: String!
   price: Int!
   image: String
   largeImage: String
@@ -48,7 +47,6 @@ input BeerCreateInput {
   description: String!
   abv: Float!
   ibu: Int!
-  brewery: String!
   price: Int!
   image: String
   largeImage: String
@@ -76,8 +74,6 @@ enum BeerOrderByInput {
   abv_DESC
   ibu_ASC
   ibu_DESC
-  brewery_ASC
-  brewery_DESC
   price_ASC
   price_DESC
   image_ASC
@@ -93,7 +89,6 @@ type BeerPreviousValues {
   description: String!
   abv: Float!
   ibu: Int!
-  brewery: String!
   price: Int!
   image: String
   largeImage: String
@@ -144,7 +139,6 @@ input BeerUpdateInput {
   description: String
   abv: Float
   ibu: Int
-  brewery: String
   price: Int
   image: String
   largeImage: String
@@ -156,7 +150,6 @@ input BeerUpdateManyMutationInput {
   description: String
   abv: Float
   ibu: Int
-  brewery: String
   price: Int
   image: String
   largeImage: String
@@ -375,46 +368,6 @@ input BeerWhereInput {
 
   """All values greater than or equal the given value."""
   ibu_gte: Int
-  brewery: String
-
-  """All values that are not equal to given value."""
-  brewery_not: String
-
-  """All values that are contained in given list."""
-  brewery_in: [String!]
-
-  """All values that are not contained in given list."""
-  brewery_not_in: [String!]
-
-  """All values less than the given value."""
-  brewery_lt: String
-
-  """All values less than or equal the given value."""
-  brewery_lte: String
-
-  """All values greater than the given value."""
-  brewery_gt: String
-
-  """All values greater than or equal the given value."""
-  brewery_gte: String
-
-  """All values containing the given string."""
-  brewery_contains: String
-
-  """All values not containing the given string."""
-  brewery_not_contains: String
-
-  """All values starting with the given string."""
-  brewery_starts_with: String
-
-  """All values not starting with the given string."""
-  brewery_not_starts_with: String
-
-  """All values ending with the given string."""
-  brewery_ends_with: String
-
-  """All values not ending with the given string."""
-  brewery_not_ends_with: String
   price: Int
 
   """All values that are not equal to given value."""

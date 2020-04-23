@@ -11,7 +11,7 @@ type Beer {
   description: String!
   abv: Float!
   ibu: Int!
-  brewery: String!
+  # brewery: Brewery!
   price: Int!
   image: String
   largeImage: String
