@@ -1,11 +1,10 @@
 import React from 'react';
+import Beers from '../components/Beers';
 
-const Home = props => {
-  return (
-    <div>
-      <h1>Hello World</h1>
-    </div>
-  );
-};
+const Home = props => (
+  <div>
+    <Beers />
+  </div>
+);
 
 export default Home;
