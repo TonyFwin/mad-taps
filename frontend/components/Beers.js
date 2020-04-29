@@ -52,3 +52,5 @@ export default class Beers extends Component {
     );
   }
 }
+
+export { ALL_BEERS_QUERY };
