@@ -1,9 +1,10 @@
 import React from 'react';
+import CreateBeer from '../components/CreateBeer';
 
 const Sell = props => {
   return (
     <div>
-      <h1>Sell</h1>
+      <CreateBeer />
     </div>
   );
 };
