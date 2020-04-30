@@ -40,7 +40,7 @@ export default class Beer extends Component {
         <div className='buttonList'>
           <Link
             href={{
-              pathname: `update`,
+              pathname: `/update`,
               query: { id: beer.id }
             }}
           >

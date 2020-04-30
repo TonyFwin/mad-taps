@@ -7,7 +7,6 @@ type Mutation {
     description: String
     abv: Float
     ibu: Int
-    brewery: String
     price: Int
     image: String
     largeImage: String
@@ -20,9 +19,28 @@ type Mutation {
     image: String
     largeImage: String
   ): Brewery!
+
+  updateBeer(
+    id: ID!
+    name: String
+    style: String
+    description: String
+    abv: Float
+    ibu: Int
+    price: Int
+  ): Beer!
+
+  updateBrewery(
+    id: ID!
+    name: String
+    description: String
+    location: String
+  ): Brewery!
 }
 
 type Query {
   beers: [Beer]!
+  beer(where: BeerWhereUniqueInput!): Beer
   breweries: [Brewery]!
+  brewery(where: BreweryWhereUniqueInput!): Brewery
 }

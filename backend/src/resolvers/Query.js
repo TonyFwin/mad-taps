@@ -2,7 +2,9 @@ const { forwardTo } = require('prisma-binding');
 
 const Query = {
   beers: forwardTo('db'),
-  breweries: forwardTo('db')
+  beer: forwardTo('db'),
+  breweries: forwardTo('db'),
+  brewery: forwardTo('db')
   // async beers(parent, args, ctx, info) {
   //   const beers = await ctx.db.query.beers();
   //   return beers;
