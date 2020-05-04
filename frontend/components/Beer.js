@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import DeleteBeer from './DeleteBeer';
 import Title from './styles/Title';
 import ItemStyles from './styles/ItemStyles';
 import PriceTag from './styles/PriceTag';
-import formatMoney from '../lib/formatMoney';
 import Item from './styles/ItemStyles';
+import formatMoney from '../lib/formatMoney';
 
 export default class Beer extends Component {
   static propTypes = {
@@ -47,7 +48,7 @@ export default class Beer extends Component {
             <a>Edit 📝</a>
           </Link>
           <button> Add to Card</button>
-          <button>Delete</button>
+          <DeleteBeer id={beer.id}>Delete This Item</DeleteBeer>
         </div>
       </ItemStyles>
     );

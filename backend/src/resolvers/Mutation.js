@@ -58,6 +58,26 @@ const Mutations = {
       },
       info
     );
+  },
+
+  async deleteBeer(parent, args, ctx, info) {
+    const where = { id: args.id };
+    // find the beer
+    const beer = await ctx.db.query.beer({ where }, `{id name}`);
+    // check if permissions
+    //TODO
+    // delete
+    return ctx.db.mutation.deleteBeer({ where }, info);
+  },
+
+  async deleteBrewery(parent, args, ctx, info) {
+    const where = { id: args.id };
+    // find the beer
+    const brewery = await ctx.db.query.brewery({ where }, `{id name}`);
+    // check if permissions
+    //TODO
+    // delete
+    return ctx.db.mutation.deleteBrewery({ where }, info);
   }
 };
 

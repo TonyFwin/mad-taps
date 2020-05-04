@@ -36,6 +36,9 @@ type Mutation {
     description: String
     location: String
   ): Brewery!
+
+  deleteBeer(id: ID!): Beer
+  deleteBrewery(id: ID!): Brewery
 }
 
 type Query {
