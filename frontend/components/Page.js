@@ -45,6 +45,7 @@ injectGlobal`
     margin: 0;
     font-size: 1.6rem;
     line-height: 2;
+    overflow-x: hidden;
   }
   a {
     text-decoration: none;
