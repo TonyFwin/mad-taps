@@ -35,7 +35,7 @@ export default class Brewery extends Component {
         <div className='buttonList'>
           <Link
             href={{
-              pathname: `/update`,
+              pathname: `/updateBrewery`,
               query: { id: brewery.id }
             }}
           >
