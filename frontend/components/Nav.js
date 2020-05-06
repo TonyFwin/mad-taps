@@ -11,6 +11,9 @@ const Nav = props => {
       <Link href='/sell'>
         <a>Sell</a>
       </Link>
+      <Link href='/breweries'>
+        <a>Breweries</a>
+      </Link>
       <Link href='/signup'>
         <a>Signup</a>
       </Link>
