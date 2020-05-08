@@ -33,8 +33,8 @@ const SingleBeerStyles = styled.div`
   }
 `;
 
-const SINGLE_ITEM_QUERY = gql`
-  query SINGLE_ITEM_QUERY($id: ID!) {
+const SINGLE_BEER_QUERY = gql`
+  query SINGLE_BEER_QUERY($id: ID!) {
     beer(where: { id: $id }) {
       id
       name
