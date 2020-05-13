@@ -6,6 +6,8 @@ import Form from './styles/Form';
 import ErrorMessage from './ErrorMessage';
 import formatMoney from '../lib/formatMoney';
 
+// TODO: Check if user is logged in as Brewery User
+
 const CREATE_BEER_MUTATION = gql`
   mutation CREATE_BEER_MUTATION(
     $name: String!

@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import NavStyles from './styles/NavStyles';
 
+// TODO: Hide /sell link if user is not logged in as brewery user
+
 const Nav = props => {
   return (
     <NavStyles>
