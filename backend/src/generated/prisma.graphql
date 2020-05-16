@@ -1,5 +1,5 @@
 # source: https://us1.prisma.sh/tony-nguyen-51ba19/mad-taps/dev
-# timestamp: Thu Apr 23 2020 10:34:55 GMT-0600 (GMT-06:00)
+# timestamp: Sat May 16 2020 14:05:19 GMT-0600 (GMT-06:00)
 
 type AggregateBeer {
   count: Int!
@@ -28,6 +28,7 @@ type Beer implements Node {
   price: Int!
   image: String
   largeImage: String
+  createdAt: DateTime!
 }
 
 """A connection to a list of items."""
@@ -50,6 +51,7 @@ input BeerCreateInput {
   price: Int!
   image: String
   largeImage: String
+  createdAt: DateTime!
 }
 
 """An edge in a connection."""
@@ -80,6 +82,8 @@ enum BeerOrderByInput {
   image_DESC
   largeImage_ASC
   largeImage_DESC
+  createdAt_ASC
+  createdAt_DESC
 }
 
 type BeerPreviousValues {
@@ -92,6 +96,7 @@ type BeerPreviousValues {
   price: Int!
   image: String
   largeImage: String
+  createdAt: DateTime!
 }
 
 type BeerSubscriptionPayload {
@@ -142,6 +147,7 @@ input BeerUpdateInput {
   price: Int
   image: String
   largeImage: String
+  createdAt: DateTime
 }
 
 input BeerUpdateManyMutationInput {
@@ -153,6 +159,7 @@ input BeerUpdateManyMutationInput {
   price: Int
   image: String
   largeImage: String
+  createdAt: DateTime
 }
 
 input BeerWhereInput {
@@ -470,6 +477,28 @@ input BeerWhereInput {
 
   """All values not ending with the given string."""
   largeImage_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
 }
 
 input BeerWhereUniqueInput {
@@ -846,6 +875,8 @@ input BreweryWhereInput {
 input BreweryWhereUniqueInput {
   id: ID
 }
+
+scalar DateTime
 
 """
 The `Long` scalar type represents non-fractional signed whole numeric values.

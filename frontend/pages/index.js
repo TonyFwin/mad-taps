@@ -3,7 +3,7 @@ import Beers from '../components/Beers';
 
 const Home = props => (
   <div>
-    <Beers />
+    <Beers page={parseFloat(props.query.page) || 1} />
   </div>
 );
 

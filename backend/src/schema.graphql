@@ -42,8 +42,14 @@ type Mutation {
 }
 
 type Query {
-  beers: [Beer]!
+  beers(
+    where: BeerWhereInput
+    orderBy: BeerOrderByInput
+    skip: Int
+    first: Int
+  ): [Beer]!
   beer(where: BeerWhereUniqueInput!): Beer
   breweries: [Brewery]!
   brewery(where: BreweryWhereUniqueInput!): Brewery
+  beersConnection(where: BeerWhereInput): BeerConnection!
 }

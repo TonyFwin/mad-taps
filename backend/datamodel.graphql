@@ -16,6 +16,7 @@ type Beer {
   image: String
   largeImage: String
   # user: User!
+  createdAt: DateTime!
 }
 
 type Brewery {
