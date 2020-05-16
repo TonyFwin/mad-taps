@@ -51,7 +51,7 @@ const SINGLE_BEER_QUERY = gql`
 export default class SingleBeer extends Component {
   render() {
     return (
-      <Query query={SINGLE_ITEM_QUERY} variables={{ id: this.props.id }}>
+      <Query query={SINGLE_BEER_QUERY} variables={{ id: this.props.id }}>
         {({ error, loading, data }) => {
           if (error) return <ErrorMessage error={error} />;
           if (loading) return <p>Loading...</p>;
