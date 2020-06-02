@@ -39,6 +39,8 @@ type Mutation {
 
   deleteBeer(id: ID!): Beer
   deleteBrewery(id: ID!): Brewery
+
+  signup(email: String!, password: String!, name: String!): User!
 }
 
 type Query {
