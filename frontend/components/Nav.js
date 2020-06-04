@@ -1,12 +1,22 @@
 import React from 'react';
 import Link from 'next/link';
 import NavStyles from './styles/NavStyles';
+import User from './User';
 
 // TODO: Hide /sell link if user is not logged in as brewery user
 
 const Nav = props => {
   return (
     <NavStyles>
+      <User>
+        {({ data: { me } }) => {
+          console.log(me);
+          if (me) {
+            return <p>{me.name}</p>;
+          }
+          return null;
+        }}
+      </User>
       <Link href='/beers'>
         <a>Shop</a>
       </Link>
