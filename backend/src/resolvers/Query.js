@@ -5,15 +5,19 @@ const Query = {
   beer: forwardTo('db'),
   breweries: forwardTo('db'),
   brewery: forwardTo('db'),
-  beersConnection: forwardTo('db')
-  // async beers(parent, args, ctx, info) {
-  //   const beers = await ctx.db.query.beers();
-  //   return beers;
-  // },
-  // async breweries(parent, args, ctx, info) {
-  //   const breweries = await ctx.db.query.breweries();
-  //   return breweries;
-  // }
+  beersConnection: forwardTo('db'),
+  me(parent, args, ctx, info) {
+    // check is there is a current userId
+    if (!ctx.request.userId) {
+      return null;
+    }
+    return ctx.db.query.user(
+      {
+        where: { id: ctx.request.userId }
+      },
+      info
+    );
+  }
 };
 
 module.exports = Query;

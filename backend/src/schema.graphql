@@ -54,4 +54,5 @@ type Query {
   breweries: [Brewery]!
   brewery(where: BreweryWhereUniqueInput!): Brewery
   beersConnection(where: BeerWhereInput): BeerConnection!
+  me: User
 }
