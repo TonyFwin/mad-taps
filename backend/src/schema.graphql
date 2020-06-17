@@ -41,6 +41,7 @@ type Mutation {
   deleteBrewery(id: ID!): Brewery
 
   signup(email: String!, password: String!, name: String!): User!
+  signin(email: String!, password: String!): User!
 }
 
 type Query {
