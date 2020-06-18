@@ -2,8 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import NavStyles from './styles/NavStyles';
 import User from './User';
-
-// TODO: Hide /sell link if user is not logged in as brewery user
+import Signout from './Signout';
 
 const Nav = props => {
   return (
@@ -27,6 +26,7 @@ const Nav = props => {
               <Link href='/me'>
                 <a>Account</a>
               </Link>
+              <Signout />
             </>
           )}
           {!me && (
